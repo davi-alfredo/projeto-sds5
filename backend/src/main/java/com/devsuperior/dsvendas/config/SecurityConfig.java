@@ -24,8 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {		
 		if (Arrays.asList(env.getActiveProfiles()).contains("test")) {
-			http.headers().frameOptions().disable();			
-			System.out.println("Entrou aqui");
+			http.headers().frameOptions().disable();
 		}
 		
 		http.cors().and().csrf().disable();
