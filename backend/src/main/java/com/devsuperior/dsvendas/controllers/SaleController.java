@@ -16,6 +16,11 @@ import com.devsuperior.dsvendas.dto.SaleSumDTO;
 import com.devsuperior.dsvendas.services.SaleService;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.enums.Explode;
+import io.swagger.v3.oas.annotations.enums.ParameterIn;
+import io.swagger.v3.oas.annotations.enums.ParameterStyle;
+import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 @RestController
@@ -25,10 +30,10 @@ public class SaleController {
 	
 	@Autowired
 	private SaleService service;
-	
+		
 	@Operation(description = "Gets paginated sales information")
 	@GetMapping
-	public ResponseEntity<Page<SaleDTO>> findAll(Pageable pageable){		
+	public ResponseEntity<Page<SaleDTO>> findAll(@Parameter Pageable pageable){		
 		Page<SaleDTO> list = service.findAll(pageable);		
 		return ResponseEntity.ok(list);		
 	}
